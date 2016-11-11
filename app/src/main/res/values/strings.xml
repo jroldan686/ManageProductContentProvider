@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ManageProducts</string>
+    <string name="txvUser">User</string>
+    <string name="txvPassword">Password</string>
+    <string name="ckbRemember">Remember</string>
+    <string name="txvForgot">Forgot your password?</string>
+    <string name="btnLogin">Login</string>
+    <string name="action_add_product">Add product</string>
+    <string name="action_sort_alphabetically">Sort alphabetically</string>
+    <string name="action_settings_general">Settings general</string>
+    <string name="action_settings_account">Settings account</string>
+</resources>

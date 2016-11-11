@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ManageProducts</string>
+    <string name="txvUser">User</string>
+    <string name="txvPassword">Password</string>
+    <string name="ckbRemember">Remeber</string>
+    <string name="btnCancel">Cancel</string>
+    <string name="btnOk">OK</string>
+</resources>

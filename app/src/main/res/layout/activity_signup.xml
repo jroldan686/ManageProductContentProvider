@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:text="User name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="35dp"
+        android:id="@+id/txvUserName" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/txvUserName"
+        android:layout_alignStart="@+id/txvUserName"
+        android:layout_marginTop="12dp"
+        android:id="@+id/edtUserName" />
+
+    <TextView
+        android:text="Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvPassword"
+        android:layout_marginBottom="54dp"
+        android:layout_alignBottom="@+id/txvEmail"
+        android:layout_alignStart="@+id/txvEmail"
+        android:layout_alignEnd="@+id/txvUserName" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginTop="13dp"
+        android:id="@+id/edtPassword"
+        android:layout_alignTop="@+id/txvPassword"
+        android:layout_alignStart="@+id/txvPassword" />
+
+    <TextView
+        android:text="E-mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvEmail"
+        android:layout_below="@+id/txvUserName"
+        android:layout_alignStart="@+id/txvUserName"
+        android:layout_marginTop="133dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edtEmail"
+        android:layout_above="@+id/txvProvince"
+        android:layout_alignStart="@+id/txvProvince" />
+
+    <TextView
+        android:text="Province"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvProvince"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/txvEmail" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txvProvince"
+        android:layout_marginTop="10dp"
+        android:id="@+id/spnProvince"
+        android:layout_alignStart="@+id/txvProvince"
+        android:layout_alignEnd="@+id/edtEmail" />
+
+    <TextView
+        android:text="City"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvCity"
+        android:layout_below="@+id/txvProvince"
+        android:layout_alignStart="@+id/txvProvince"
+        android:layout_marginTop="47dp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spnCity"
+        android:layout_below="@+id/txvCity"
+        android:layout_alignStart="@+id/txvCity"
+        android:layout_alignEnd="@+id/spnProvince" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:layout_below="@+id/txvCity"
+        android:layout_alignStart="@+id/txvCity"
+        android:orientation="horizontal"
+        android:id="@+id/rdgTypeClient">
+
+        <RadioButton
+            android:text="Company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rdbCompany"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:text="Particular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rdbParticular"
+            android:layout_weight="1" />
+
+    </RadioGroup>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tilCompany">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/edtNameCompany"
+            android:layout_above="@+id/txvParticular"
+            android:layout_alignStart="@+id/txvParticular" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:text="Sign Up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSignUp"
+        android:layout_weight="1"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp" />
+
+</RelativeLayout>

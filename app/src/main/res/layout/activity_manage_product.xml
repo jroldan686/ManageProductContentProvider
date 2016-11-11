@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvName" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edtName"
+        android:layout_below="@+id/txvName" />
+
+    <TextView
+        android:text="Description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvDescription"
+        android:layout_below="@+id/edtName" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edtDescription"
+        android:layout_below="@+id/txvDescription"
+        android:lines="5"
+        android:minLines="0"
+        android:maxLines="255" />
+
+    <TextView
+        android:text="Dosage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvDosage"
+        android:layout_below="@+id/edtDescription" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edtDosage"
+        android:layout_below="@+id/txvDosage" />
+
+    <TextView
+        android:text="Brand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvBrand"
+        android:layout_below="@+id/edtDosage" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edtBrand"
+        android:layout_below="@+id/txvBrand" />
+
+    <TextView
+        android:text="txvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvPrice"
+        android:layout_below="@+id/edtBrand" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edtPrice"
+        android:layout_below="@+id/txvPrice" />
+
+    <TextView
+        android:text="Stock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvStock"
+        android:layout_below="@+id/edtPrice" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edtStock"
+        android:layout_below="@+id/txvStock" />
+
+    <Button
+        android:text="Insert image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnInsertImage"
+        android:layout_below="@+id/edtStock" />
+
+    <Button
+        android:text="Add product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAddProduct"
+        android:layout_below="@+id/btnInsertImage" />
+</RelativeLayout>

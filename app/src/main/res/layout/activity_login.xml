@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="deint.jroldan.manageproductrecycler.Login_Activity">
+
+    <TextView
+        android:layout_width="@dimen/widget_textview_width"
+        android:layout_height="wrap_content"
+        android:text="@string/txvUser"
+        android:id="@+id/txvUser" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tilUser"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/error"
+        app:hintTextAppearance="@style/hint">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edtUser"
+        android:layout_toRightOf="@+id/txvUser"
+        android:layout_toEndOf="@+id/txvUser"
+        android:layout_alignBaseline="@+id/txvUser"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:text="@string/txvPassword"
+        android:layout_width="@dimen/widget_textview_width"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tilUser"
+        android:layout_alignStart="@+id/txvUser"
+        android:layout_alignLeft="@+id/txvUser"
+        android:id="@+id/txvPassword"
+        android:layout_marginTop="@dimen/widget_margin_top" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tilPassword"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/error"
+        app:hintTextAppearance="@style/hint">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/edtPassword"
+        android:layout_below="@+id/txvUser"
+        android:layout_toRightOf="@+id/txvPassword"
+        android:layout_toEndOf="@+id/txvPassword"
+        android:layout_alignBaseline="@+id/txvPassword" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <CheckBox
+        android:text="@string/ckbRemember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ckbRemember"
+        android:layout_below="@+id/tilPassword"
+        android:layout_marginTop="@dimen/widget_margin_top"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="@string/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLogin"
+        android:layout_below="@+id/ckbRemember"
+        style="?android:attr/buttonBarButtonStyle"
+        android:background="@drawable/selbtnlogin" />
+
+    <TextView
+        android:text="@string/txvForgot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnLogin"
+        android:layout_alignStart="@+id/btnLogin"
+        android:layout_alignLeft="@+id/btnLogin"
+        android:id="@+id/txvForgot"
+        android:layout_marginTop="@dimen/widget_margin_top" />
+
+</RelativeLayout>
