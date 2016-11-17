@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import deint.jroldan.manageproductrecycler.ManageProductRecycler_Application;
@@ -25,7 +26,7 @@ public class ProductAdapterRecycler extends RecyclerView.Adapter<ProductAdapterR
 
     public ProductAdapterRecycler(Context context) {
         this.context = context;
-        products=((ManageProductRecycler_Application)context.getApplicationContext()).getProducts();
+        products=new ArrayList<Product>(((ManageProductRecycler_Application)context.getApplicationContext()).getProducts());
     }
 
     @Override
