@@ -21,13 +21,12 @@ import deint.jroldan.manageproductrecycler.presenter.LoginPresenter;
 
 public class Login_Activity extends AppCompatActivity implements IValidateAccount.View {
 
-    private IValidateAccount.Presenter account;
+    private LoginPresenter account;
     private EditText edtPassword;
     private EditText edtUser;
     private TextView txvForgot;
     private TextInputLayout tilUser;
     private TextInputLayout tilPassword;
-    private LoginPresenter loginPresenter;
     private Button btnLogin;
     private final String TAG="login";
     private ViewGroup layout;

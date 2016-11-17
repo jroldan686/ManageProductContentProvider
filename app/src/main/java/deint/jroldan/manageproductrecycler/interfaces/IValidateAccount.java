@@ -19,7 +19,11 @@ public interface IValidateAccount {
     }
 
     interface Presenter{
-        static int validateCredentialsUser(String user) {
+
+        int validateCredentialsUser(String user);
+        int validateCredentialsPassword(String password);
+
+/*        static int validateCredentialsUser(String user) {
             if (TextUtils.isEmpty(user)) {
                 return Error.DATA_EMPTY;
             }
@@ -37,15 +41,15 @@ public interface IValidateAccount {
                     if (!(password.matches("(.*)[a-z]+?(.*)") && password.matches("(.*)[A-Z]+?(.*)"))) {
                         result = Error.PASSWORD_CASE;
                     }
-                /*
+                *//*
                 // We save the user in the Application class
                 ((ManageProductRecycler_Application) ((Context) view).getApplicationContext()).setUser(new User(user, password));
-                */
+                *//*
                 } else {
                     result = Error.PASSWORD_LENGTH;
                 }
             }
             return result;
-        }
+        }*/
     }
 }

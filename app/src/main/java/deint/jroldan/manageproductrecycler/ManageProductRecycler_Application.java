@@ -58,7 +58,7 @@ public class ManageProductRecycler_Application extends Application {
         //Collections.sort(products, Product.PRICE_COMPARATOR);
 
         // Lambda expression
-        Collections.sort(products, (p1, p2) -> Double.compare(p1.getmPrice(), p2.getmPrice()));
+        //Collections.sort(products, (p1, p2) -> Double.compare(p1.getmPrice(), p2.getmPrice()));
         return products;
     }
 

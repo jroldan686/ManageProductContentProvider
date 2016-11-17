@@ -1,5 +1,9 @@
 package deint.jroldan.manageproductrecycler.preferences;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 import deint.jroldan.manageproductrecycler.interfaces.IPreferences;
 
 /**
@@ -7,4 +11,17 @@ import deint.jroldan.manageproductrecycler.interfaces.IPreferences;
  */
 
 public class GeneralPreferences implements IPreferences {
+    private static IPreferences generalPreferences;
+    private SharedPreferences sharedPreferences;
+
+    public static IPreferences getInstance(Context context) {
+        if(generalPreferences == null) {
+            generalPreferences = new GeneralPreferences(context);
+        }
+        return generalPreferences;
+    }
+
+    private GeneralPreferences(Context context) {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+    }
 }
