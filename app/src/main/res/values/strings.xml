@@ -9,4 +9,7 @@
     <string name="action_sort_alphabetically">Sort alphabetically</string>
     <string name="action_settings_general">Settings general</string>
     <string name="action_settings_account">Settings account</string>
+
+    <!-- %1 primer argumento, %2 segundo ; $s string ; $d double... -->
+    <string name="message_provinces_city">Ha seleccionado %1$s (%2$s)</string>
 </resources>

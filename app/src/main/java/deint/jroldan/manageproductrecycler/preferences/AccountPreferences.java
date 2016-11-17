@@ -2,6 +2,7 @@ package deint.jroldan.manageproductrecycler.preferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import deint.jroldan.manageproductrecycler.interfaces.IPreferences;
 
@@ -15,22 +16,35 @@ public class AccountPreferences implements IPreferences {
     public static final String FILE = "";
     public static final String USER = "user";
     public static final String PASSWORD = "password";
-    private Context context;
+    public static final String EMAIL = "email";
 
-    private AccountPreferences() {
+    private SharedPreferences sharedPreferences;
 
+    private AccountPreferences(Context c) {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(c);
     }
 
     //Singletón de la clase
-    public static IPreferences getInstance(Context context){
+    public static IPreferences getInstance(Context c){
         if(accountPreferences==null) {
-            accountPreferences = new AccountPreferences();
-            context=context;
+            accountPreferences = new AccountPreferences(c);
         }
         return accountPreferences;
     }
 
-    public static Editor putUser(Context context) {
-        getEditor().putString(USER,user).apply();
+    public void putUser(String user) {
+        getEditor().putString(USER, user).apply();
+    }
+
+    public void putPassword(String password) {
+        getEditor().putString(PASSWORD, password).apply();
+    }
+
+    public void putEmail(String email) {
+        getEditor().putString(EMAIL, email).apply();
+    }
+
+    private SharedPreferences.Editor getEditor() {
+        return sharedPreferences.edit();
     }
 }

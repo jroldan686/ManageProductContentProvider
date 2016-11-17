@@ -3,21 +3,25 @@ package deint.jroldan.manageproductrecycler;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import deint.jroldan.manageproductrecycler.interfaces.ILoginMvp;
+import deint.jroldan.manageproductrecycler.interfaces.IValidateAccount;
 import deint.jroldan.manageproductrecycler.presenter.LoginPresenter;
 
-public class Login_Activity extends AppCompatActivity implements ILoginMvp.View {
+public class Login_Activity extends AppCompatActivity implements IValidateAccount.View {
 
-    private ILoginMvp.Presenter loginMvp;
+    private IValidateAccount.Presenter account;
     private EditText edtPassword;
     private EditText edtUser;
     private TextView txvForgot;
@@ -26,12 +30,14 @@ public class Login_Activity extends AppCompatActivity implements ILoginMvp.View 
     private LoginPresenter loginPresenter;
     private Button btnLogin;
     private final String TAG="login";
+    private ViewGroup layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        loginMvp = new LoginPresenter(this);
+        layout=(ViewGroup)findViewById(R.id.activity_login);
+        account = new LoginPresenter(this);
         edtUser = (EditText)findViewById(R.id.edtUser);
         edtPassword = (EditText)findViewById(R.id.edtPassword);
         tilUser = (TextInputLayout)findViewById(R.id.tilUser);
@@ -44,7 +50,8 @@ public class Login_Activity extends AppCompatActivity implements ILoginMvp.View 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginMvp.validateCredentials(tilUser.getEditText().getText().toString(), tilPassword.getEditText().getText().toString());
+                account.validateCredentialsLogin(tilUser.getEditText().getText().toString(),
+                        tilPassword.getEditText().getText().toString());
             }
         });
 
@@ -56,19 +63,24 @@ public class Login_Activity extends AppCompatActivity implements ILoginMvp.View 
     }
 
     @Override
-    public void setMessageError(String messageError, int idView) {
+    public void setMessageError(String nameResource, int idView) {
+        // Resource whose name is nameResource has to be taken
+        String messageError = getResources().getString(getResources().getIdentifier(nameResource,"string",getPackageName()));
         switch (idView) {
-            case R.id.edtPassword:
-                edtPassword.setError(messageError);
+            case R.id.tilPassword:
+                //tilPassword.setError(messageError);
+                Snackbar.make(layout, messageError,Snackbar.LENGTH_SHORT).show();
                 break;
-            case R.id.edtUser:
-                edtUser.setError(messageError);
+            case R.id.tilUser:
+                //tilUser.setError(messageError);
+                Snackbar.make(layout, messageError,Snackbar.LENGTH_SHORT).show();
+                break;
         }
         //Toast.makeText(this, messageError, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void launchActivity() {
+    public void startActivity() {
         Intent intent = new Intent(this, Product_Activity.class);
         startActivity(intent);
     }
