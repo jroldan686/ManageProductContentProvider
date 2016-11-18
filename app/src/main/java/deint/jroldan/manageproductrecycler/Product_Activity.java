@@ -7,27 +7,44 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
+import java.util.List;
+
+import deint.jroldan.manageproductrecycler.adapter.ProductAdapter;
 import deint.jroldan.manageproductrecycler.adapter.ProductAdapterRecycler;
+import deint.jroldan.manageproductrecycler.interfaces.IProduct;
+import deint.jroldan.manageproductrecycler.model.Product;
 
 public class Product_Activity extends AppCompatActivity {
 
-    private ProductAdapterRecycler adapter;
-    private RecyclerView rcvProduct;
+    private ProductAdapter adapter;
+    //private ProductAdapterRecycler adapter;
+    //private RecyclerView rcvProduct;
+    private ListView listProduct;
     private static final int ADD_PRODUCT = 0;
     private static final int EDIT_PRODUCT = 1;
-    private static final boolean ASC = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product);
+        setContentView(R.layout.activity_product_recycler);
 
-        adapter = new ProductAdapterRecycler(this);
-        rcvProduct = (RecyclerView)findViewById(R.id.rcvProduct);
-        rcvProduct.setLayoutManager(new LinearLayoutManager(this));
-        rcvProduct.setAdapter(adapter);
-
+        listProduct=(ListView)findViewById(R.id.listProduct);
+        adapter = new ProductAdapter(this);
+        listProduct.setAdapter(adapter);
+        listProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(IProduct.PRODUCT_KEY, (Product)parent.getItemAtPosition(position));
+                Intent intent = new Intent(Product_Activity.this, ManageProduct_Activity.class);
+                intent.putExtras(bundle);
+                startActivityForResult(intent, EDIT_PRODUCT);
+            }
+        });
     }
 
     /*
@@ -78,9 +95,15 @@ public class Product_Activity extends AppCompatActivity {
             case ADD_PRODUCT:
                 if(resultCode==RESULT_OK) {
                     //Añadir el producto
+                    Product product = (Product)data.getExtras().getSerializable(PRODUCT_KEY);
+                    ((ProductAdapter)listProduct.getAdapter()).addProduct(product);
                 }
                 break;
             case EDIT_PRODUCT:
+                if(resultCode==RESULT_OK) {
+                    //Product product = (Product) data.getExtras().getSerializable(PRODUCT_KEY);
+                    //((ProductAdapter) listProduct.getAdapter()).addProduct(product);
+                }
                 break;
         }
         /*

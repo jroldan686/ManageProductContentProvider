@@ -4,6 +4,7 @@ package deint.jroldan.manageproductrecycler.model;
  * Created by usuario on 19/10/16.
  */
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Locale;
 
@@ -11,7 +12,7 @@ import java.util.Locale;
  * Class Product (Model class)
  * If we want to order by different fields, we don't use the Comparable interface, we use Comparator
  */
-public class Product implements Comparable<Product> {
+public class Product implements Comparable<Product>, Serializable {
     private int mId;
     private String mName;
     private String mDescription;
@@ -20,6 +21,12 @@ public class Product implements Comparable<Product> {
     private double mPrice;
     private int mStock;
     private int mImage;
+    public static final Comparator<Product> NAME_COMPARATOR = new Comparator<Product>() {
+        @Override
+        public int compare(Product p1, Product p2) {
+            return p1.mName.compareTo(p2.mName);
+        }
+    };
     public static final Comparator<Product> PRICE_COMPARATOR = new Comparator<Product>() {
         @Override
         public int compare(Product p1, Product p2) {
