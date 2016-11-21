@@ -18,6 +18,8 @@ import deint.jroldan.manageproductrecycler.adapter.ProductAdapterRecycler;
 import deint.jroldan.manageproductrecycler.interfaces.IProduct;
 import deint.jroldan.manageproductrecycler.model.Product;
 
+import static deint.jroldan.manageproductrecycler.interfaces.IProduct.PRODUCT_KEY;
+
 public class Product_Activity extends AppCompatActivity {
 
     private ProductAdapter adapter;
@@ -39,7 +41,7 @@ public class Product_Activity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(IProduct.PRODUCT_KEY, (Product)parent.getItemAtPosition(position));
+                bundle.putSerializable(PRODUCT_KEY, (Product)parent.getItemAtPosition(position));
                 Intent intent = new Intent(Product_Activity.this, ManageProduct_Activity.class);
                 intent.putExtras(bundle);
                 startActivityForResult(intent, EDIT_PRODUCT);

@@ -49,7 +49,7 @@ public class SignupActivity extends AppCompatActivity implements IValidateUser.V
         presenter = new SignupPresenter(this);
 
         edtUser = (EditText)findViewById(R.id.edtUserName);
-        edtPassword = (EditText)findViewById(R.id.edtPassword);
+        edtPassword = (EditText)findViewById(R.id.edtUserPassword);
         edtEmail = (EditText)findViewById(R.id.edtEmail);
 
         typeClient=(RadioGroup)findViewById(R.id.rdgTypeClient);

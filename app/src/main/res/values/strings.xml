@@ -12,4 +12,13 @@
 
     <!-- %1 primer argumento, %2 segundo ; $s string ; $d double... -->
     <string name="message_provinces_city">Ha seleccionado %1$s (%2$s)</string>
+
+    <string name="txvUsername">User name</string>
+    <string name="txvUserPassword">Password</string>
+    <string name="txvEmail">E-mail</string>
+    <string name="txvProvince">Province</string>
+    <string name="txvCity">City</string>
+    <string name="txvCompany">Company</string>
+    <string name="txvParticular">Particular</string>
+    <string name="btnSignup">Sign Up</string>
 </resources>

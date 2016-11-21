@@ -3,7 +3,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
-        android:text="User name"
+        android:text="@string/txvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -23,10 +23,10 @@
         android:id="@+id/edtUserName" />
 
     <TextView
-        android:text="Password"
+        android:text="@string/txvPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txvPassword"
+        android:id="@+id/txvUserPassword"
         android:layout_marginBottom="54dp"
         android:layout_alignBottom="@+id/txvEmail"
         android:layout_alignStart="@+id/txvEmail"
@@ -38,12 +38,12 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:layout_marginTop="13dp"
-        android:id="@+id/edtPassword"
+        android:id="@+id/edtUserPassword"
         android:layout_alignTop="@+id/txvPassword"
         android:layout_alignStart="@+id/txvPassword" />
 
     <TextView
-        android:text="E-mail"
+        android:text="@string/txvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txvEmail"
@@ -61,7 +61,7 @@
         android:layout_alignStart="@+id/txvProvince" />
 
     <TextView
-        android:text="Province"
+        android:text="@string/txvProvince"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txvProvince"
@@ -78,7 +78,7 @@
         android:layout_alignEnd="@+id/edtEmail" />
 
     <TextView
-        android:text="City"
+        android:text="@string/txvCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txvCity"
@@ -104,14 +104,14 @@
         android:id="@+id/rdgTypeClient">
 
         <RadioButton
-            android:text="Company"
+            android:text="@string/txvCompany"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rdbCompany"
             android:layout_weight="1" />
 
         <RadioButton
-            android:text="Particular"
+            android:text="@string/txvParticular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rdbParticular"
@@ -134,7 +134,7 @@
     </android.support.design.widget.TextInputLayout>
 
     <Button
-        android:text="Sign Up"
+        android:text="@string/btnSignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnSignUp"
