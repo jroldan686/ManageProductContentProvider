@@ -42,4 +42,9 @@ public class ManageProduct_Activity extends AppCompatActivity {
             }
         });
     }
+
+    private void saveProduct() {
+
+
+    }
 }
