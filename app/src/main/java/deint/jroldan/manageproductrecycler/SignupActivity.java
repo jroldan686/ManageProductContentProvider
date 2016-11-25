@@ -42,7 +42,7 @@ public class SignupActivity extends AppCompatActivity implements IValidateUser.V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        layout=(ViewGroup)findViewById(R.id.activity_login);
+        layout=(ViewGroup)findViewById(R.id.activity_signup);
         spnProvince=(Spinner)findViewById(R.id.spnProvince);
         spnCity=(Spinner)findViewById(R.id.spnCity);
 
