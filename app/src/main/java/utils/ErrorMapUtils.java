@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import deint.jroldan.manageproductrecycler.R;
+import deint.jroldan.manageproductfragment.R;
 
 /**
  * Created by lourdes on 11/11/16.

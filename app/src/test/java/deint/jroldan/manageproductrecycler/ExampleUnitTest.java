@@ -1,4 +1,4 @@
-package deint.jroldan.manageproductrecycler;
+package deint.jroldan.manageproductfragment;
 
 import org.junit.Test;
 
