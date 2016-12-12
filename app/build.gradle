@@ -4,7 +4,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion '24.0.3'
     defaultConfig {
-        applicationId "deint.jroldan.manageproductrecycler"
+        applicationId 'deint.jroldan.manageproductfragment'
         minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
