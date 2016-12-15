@@ -10,6 +10,7 @@ import deint.jroldan.manageproductfragment.model.Product;
 
 public interface ProductPresenter {
 
+    void addProducts(Product product);
     void loadProducts();
     Product getProducts(String id);
     void deleteProduct(Product product);
@@ -21,5 +22,7 @@ public interface ProductPresenter {
         void showEmptyText(boolean show);
 
         void showMessage(String message);
+
+        void showMessageDelete(Product product);
     }
 }

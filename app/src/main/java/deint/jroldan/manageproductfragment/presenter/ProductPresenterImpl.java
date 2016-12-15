@@ -36,18 +36,26 @@ public class ProductPresenterImpl implements ProductPresenter {
 
     @Override
     public void deleteProduct(Product product) {
-        repository.deleteProduct(product);
+        //repository.deleteProduct(product);
 
         // DEPENDS OF THE IMPLEMENTATION
-        //loadProducts();
-        view.getAdapter().deleteProduct();
-        if(view.getAdapter().isEmpty()) {
-            view.showEmptyText(true);
-        }
+        loadProducts();
+        view.showMessageDelete(product);
+        //view.getAdapter().deleteProduct();
+        //if(view.getAdapter().isEmpty()) {
+        //    view.showEmptyText(true);
+        //}
     }
 
     @Override
     public void onDestroy() {
         this.view = null;
     }
+
+    /* Example implementation to delete product once the SnackBar times out
+    @Override
+    public void deleteFinallyProduct(Product product) {
+        repository.deleteProduct(product);
+        loadProducts();
+    }*/
 }

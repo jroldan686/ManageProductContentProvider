@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -189,5 +190,30 @@ public class ListProduct_Fragment extends Fragment implements ConfirmDialog.OnDe
         super.onDestroy();
         adapter = null;
         presenter = null;
+    }
+
+    @Override
+    public void showMessageDelete(final Product product) {
+
+        Snackbar.make(getView(),"Producto eliminado", Snackbar.LENGTH_LONG)
+                .setAction("UNDO", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        presenter.addProduct (product);
+                    }
+                })
+
+        // SetCallback (calling a SnacBar callback method, even if the SnackBar has been deleted by Swiping
+        .setCallback(new Snackbar.Callback() {
+
+            @Override
+            public void onDismissed(Snackbar snackbar, int event) {
+                super.onDismissed(snackbar, event);
+                if((event==DISMISS_EVENT_TIMEOUT) || (event==DISMISS_EVENT_SWIPE) ||
+                        event==DISMISS_EVENT_MANUAL || event==DISMISS_EVENT_CONSECUTIVE)
+                    // if (event!=DISMISS_EVENT_ACTION)
+                    presenter.deleteProduct(product);
+            }
+        }).show();
     }
 }

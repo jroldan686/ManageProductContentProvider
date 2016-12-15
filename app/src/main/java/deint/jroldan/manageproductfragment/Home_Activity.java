@@ -7,12 +7,17 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 /**
  * Created by usuario on 1/12/16.
  */
 
 public class Home_Activity extends AppCompatActivity {
+
+    public final static long MAXTIME = 3500;
+
+    private long mBackPressed = 0;
 
     private ListProduct_Fragment listProductFragment;
     private ManageProduct_Fragment manageProductFragment;
@@ -48,5 +53,16 @@ public class Home_Activity extends AppCompatActivity {
         ft.replace(R.id.framehome, listProductFragment);
         //ft.addToBackStack(null);
         ft.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(mBackPressed + MAXTIME > System.currentTimeMillis()) {
+            super.onBackPressed();
+            return;
+        } else {
+            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_LONG).show();
+        }
+        mBackPressed = System.currentTimeMillis();
     }
 }
