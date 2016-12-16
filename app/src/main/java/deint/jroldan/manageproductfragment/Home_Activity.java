@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AbsListView;
 import android.widget.Toast;
 
 /**
@@ -19,7 +20,7 @@ public class Home_Activity extends AppCompatActivity {
 
     private long mBackPressed = 0;
 
-    private ListProduct_Fragment listProductFragment;
+    private AbsListView.MultiChoiceModeListener listProductFragment;
     private ManageProduct_Fragment manageProductFragment;
 
     @Override

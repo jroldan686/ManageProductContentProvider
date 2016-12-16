@@ -1,14 +1,12 @@
 package deint.jroldan.manageproductfragment;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -27,9 +25,7 @@ import deint.jroldan.manageproductfragment.interfaces.ProductPresenter;
 import deint.jroldan.manageproductfragment.model.Product;
 import deint.jroldan.manageproductfragment.presenter.ProductPresenterImpl;
 
-import static deint.jroldan.manageproductfragment.interfaces.IProduct.PRODUCT_KEY;
-
-public class ListProduct_Fragment extends Fragment implements IProduct, ProductPresenter.View {
+public class MultiListProduct_Fragment extends ListFragment implements IProduct, ProductPresenter.View {
 
     private ProductAdapter adapter;
     //private ProductAdapterRecycler adapter;
@@ -41,6 +37,7 @@ public class ListProduct_Fragment extends Fragment implements IProduct, ProductP
     private ProductAdapter adapter;
     private ListProductListener mCallback;
     private ProductPresenter presenter;
+    private MultiChoicePresenter multichoicepresenter = new MultiChoicePresenter();
 
     public interface ListProductListener {
         void showManageProduct(Bundle bundle);
@@ -128,7 +125,7 @@ public class ListProduct_Fragment extends Fragment implements IProduct, ProductP
         Intent intent;
         switch (item.getItemId()) {
             case R.id.action_add_product:
-                intent = new Intent(ListProduct_Fragment.this, ManageProduct_Fragment.class);
+                intent = new Intent(MultiListProduct_Fragment.this, ManageProduct_Fragment.class);
                 startActivityForResult(intent, ADD_PRODUCT);
                 break;
             case R.id.action_sort_alphabetically:
@@ -139,11 +136,11 @@ public class ListProduct_Fragment extends Fragment implements IProduct, ProductP
                 */
                 break;
             case R.id.action_settings_general:
-                intent = new Intent(ListProduct_Fragment.this, GeneralSettingsActivity.class);
+                intent = new Intent(MultiListProduct_Fragment.this, GeneralSettingsActivity.class);
                 startActivityForResult(intent, ADD_PRODUCT);
                 break;
             case R.id.action_settings_account:
-                intent = new Intent(ListProduct_Fragment.this, AccountSettingsActivity.class);
+                intent = new Intent(MultiListProduct_Fragment.this, AccountSettingsActivity.class);
                 startActivityForResult(intent, ADD_PRODUCT);
                 break;
         }
@@ -216,5 +213,28 @@ public class ListProduct_Fragment extends Fragment implements IProduct, ProductP
                     presenter.deleteProduct(product);
             }
         }).show();
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getListView().setAdapter(adapter);
+        getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(IProduct.PRODUCT_KEY, (Product)parent.getItemAtPosition());
+                mCallback.showManageProduct(bundle);
+            }
+        });
+        getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+        SimpleMultiChoiceModeListener mcl = new SimpleMultiChoiceModeListener();
+        getListView().setMultiChoiceModeListener(mcl);
+        listProduct.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                listProduct.setItemChecked(position, !multichoicepresenter.isPositionChecked(position));
+            }
+        });
     }
 }

@@ -6,4 +6,5 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorError">#00FF00</color>
     <color name="colorHint">#883344</color>
+    <color name="background_action_mode">#b2ff59</color>
 </resources>
