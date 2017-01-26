@@ -22,6 +22,11 @@ public class ProductPresenterImpl implements ProductPresenter {
     }
 
     @Override
+    public void addProducts(Product product) {
+
+    }
+
+    @Override
     public void loadProducts() {
         /*
         if(repository.getProducts().isEmpty())
