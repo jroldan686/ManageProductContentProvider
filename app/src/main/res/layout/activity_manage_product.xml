@@ -65,6 +65,12 @@
         android:id="@+id/edtBrand"
         android:layout_below="@+id/txvBrand" />
 
+    <spinner
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        />
+
     <TextView
         android:text="txvPrice"
         android:layout_width="wrap_content"
