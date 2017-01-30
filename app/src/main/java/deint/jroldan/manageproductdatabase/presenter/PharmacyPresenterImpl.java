@@ -1,5 +1,12 @@
 package deint.jroldan.manageproductdatabase.presenter;
 
-public class PharmacyPresenterImpl {
+import deint.jroldan.manageproductdatabase.interfaces.PharmacyPresenter;
+import deint.jroldan.manageproductdatabase.model.Pharmacy;
 
+public class PharmacyPresenterImpl implements PharmacyPresenter {
+
+    @Override
+    public Pharmacy getAllPharmacy() {
+        return null;
+    }
 }

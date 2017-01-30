@@ -3,7 +3,9 @@ package deint.jroldan.manageproductdatabase.database;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.provider.BaseColumns;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +51,19 @@ public class DatabaseManager {
                 products.add(product);
             } while(cursor.moveToNext());
         }
+
+        // Show in Log the product and category tables union
+        SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+        queryBuilder.setTables(ManageProductContract.ProductEntry.PRODUCT_JOIN_CATEGORY);
+        queryBuilder.query(sqLiteDatabase, ManageProductContract.ProductEntry.COLUMNS_PRODUCT_JOIN_CATEGORY,
+                null, null, null, null, null);
+        if(cursor.moveToFirst()) {
+            do {
+                Log.d("manageproductdatabase", cursor.getString(0) + ", " + cursor.getString(1) + " -> " + cursor.getString(2));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
         DatabaseHelper.getInstance().closeDatabase();
         return products;
     }
@@ -95,7 +110,17 @@ public class DatabaseManager {
      */
     public Cursor getAllCategory() {
         SQLiteDatabase sqLiteDatabase = DatabaseHelper.getInstance().openDatabase();
-        Cursor cursor = sqLiteDatabase.query(ManageProductContract.CategoryEntry.TABLE_NAME, ManageProductContract.CategoryEntry.ALL_COLUMNS, null, null, null, null, null);
+        Cursor cursor = sqLiteDatabase.query(ManageProductContract.CategoryEntry.TABLE_NAME,
+                ManageProductContract.CategoryEntry.ALL_COLUMNS, null, null, null, null, null);
+        return cursor;
+    }
+
+    /**
+     * Pharmacy table methods
+     */
+    public Cursor getAllPharmacy() {
+        SQLiteDatabase sqLiteDatabase = DatabaseHelper.getInstance().openDatabase();
+        Cursor cursor = sqLiteDatabase.query(ManageProductContract.PharmacyEntry.TABLE_NAME, ManageProductContract.PharmacyEntry.ALL_COLUMNS, null, null, null, null, null);
         return cursor;
     }
 }
