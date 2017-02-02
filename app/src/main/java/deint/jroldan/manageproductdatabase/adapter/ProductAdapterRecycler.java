@@ -8,10 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import deint.jroldan.manageproductdatabase.ManageProduct_Application;
 import deint.jroldan.manageproductdatabase.model.Product;
 import deint.jroldan.manageproductdatabase.R;
 

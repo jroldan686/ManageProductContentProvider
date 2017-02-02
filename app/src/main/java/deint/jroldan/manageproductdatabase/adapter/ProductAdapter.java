@@ -9,11 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import deint.jroldan.manageproductdatabase.ManageProduct_Application;
 import deint.jroldan.manageproductdatabase.database.DatabaseManager;
 import deint.jroldan.manageproductdatabase.model.Product;
 import deint.jroldan.manageproductdatabase.R;
@@ -43,6 +41,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         View view=convertView;
         ProductHolder productHolder;
         if(view==null) {
+            //LayoutInflater layoutInflater = LayoutInflater.from(getContext());
             LayoutInflater layoutInflater=(LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = layoutInflater.inflate(R.layout.item_product, null);
             productHolder=new ProductHolder();
