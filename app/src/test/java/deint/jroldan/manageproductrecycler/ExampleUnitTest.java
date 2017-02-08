@@ -1,4 +1,4 @@
-package deint.jroldan.manageproductdatabase;
+package deint.jroldan.manageproductcontentprovider;
 
 import org.junit.Test;
 

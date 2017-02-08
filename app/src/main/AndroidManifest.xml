@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="deint.jroldan.manageproductdatabase">
+    package="deint.jroldan.manageproductcontentprovider">
 
     <application
         android:allowBackup="true"
@@ -8,8 +8,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name="deint.jroldan.manageproductdatabase.ManageProduct_Application">
-        <activity android:name="deint.jroldan.manageproductdatabase.SignupActivity" android:windowSoftInputMode="adjustPan">
+        android:name="deint.jroldan.manageproductcontentprovider.ManageProduct_Application">
+
+        <provider
+            android:authorities="deint.jroldan.manageproductcontentprovider"
+            android:name=".provider.ManageProductProvider"/>
+
+        <activity android:name="deint.jroldan.manageproductcontentprovider.SignupActivity" android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
