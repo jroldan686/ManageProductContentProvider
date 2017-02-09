@@ -3,6 +3,10 @@ package deint.jroldan.manageproductcontentprovider.provider;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
+import java.util.HashMap;
+
+import deint.jroldan.manageproductcontentprovider.database.DatabaseContract;
+
 import static deint.jroldan.manageproductcontentprovider.provider.ManageProductContract.CategoryEntry.CONTENT_PATH;
 
 /**
@@ -37,6 +41,13 @@ public class ManageProductContract {
         public static final String COLUMN_IMAGE = "image";
         public static final String COLUMN_IDCATEGORY = "idCategory";
         public static final String[] ALL_COLUMNS = new String[]{BaseColumns._ID,COLUMN_NAME,COLUMN_DESCRIPTION,COLUMN_BRAND,COLUMN_DOSAGE,COLUMN_PRICE,COLUMN_STOCK,COLUMN_IMAGE,COLUMN_IDCATEGORY};
+
+        public static final HashMap<String, String> sProductProjectionMapM;
+        static {
+            sProductProjectionMapM = new HashMap<>();
+            sProductProjectionMapM.put(ManageProductContract.ProductEntry.COLUMN_NAME, DatabaseContract.Product.COLUMN_NAME);
+            sProductProjectionMapM.put(ProductEntry.COLUMN_IDCATEGORY, DatabaseContract.Product.COLUMN_IDCATEGORY);
+        }
     }
 
     public static class InvoiceLineEntry implements BaseColumns {

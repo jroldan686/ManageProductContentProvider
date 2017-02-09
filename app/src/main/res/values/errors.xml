@@ -5,4 +5,6 @@
     <string name="password_case">Debe contener al menos un carácter en mayúscula/minúscula</string>
     <string name="password_length">Longitud mínima de 8 caracteres</string>
     <string name="email_invalid">Invalid email adress</string>
+
+    <string name="error_insert">SQLite failed to insert</string>
 </resources>

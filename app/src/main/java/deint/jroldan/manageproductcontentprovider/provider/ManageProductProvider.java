@@ -1,9 +1,11 @@
 package deint.jroldan.manageproductcontentprovider.provider;
 
 import android.content.ContentProvider;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
@@ -68,6 +70,7 @@ public class ManageProductProvider extends ContentProvider {
                 break;
             case PRODUCT:
                 sqLiteQueryBuilder.setTables(DatabaseContract.Product.TABLE_NAME);
+                sqLiteQueryBuilder.setProjectionMap(ManageProductContract.ProductEntry.sProductProjectionMapM);
                 if (TextUtils.isEmpty(sortOrder)) {
                     sortOrder = DatabaseContract.Product.DEFAULT_SORT;
                 }
@@ -92,7 +95,26 @@ public class ManageProductProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        return null;
+        Uri newUri;
+        long regId;
+        switch (uriMatcher.match(uri)) {
+            case CATEGORY:
+                regId = sqLiteDatabase.insert(DatabaseContract.Category.TABLE_NAME, null, values);
+                newUri = ContentUris.withAppendedId(uri,regId);
+                break;
+
+            case PRODUCT:
+                regId = sqLiteDatabase.insert(DatabaseContract.Product.TABLE_NAME, null, values);
+                newUri = ContentUris.withAppendedId(uri,regId);
+                break;
+        }
+        if(regId!=-1) {
+            // Notify the observers that an URI was modified
+            getContext().getContentResolver().notifyChange(newUri,null);
+        }
+        else
+        throw new SQLException()
+        return newUri;
     }
 
     @Override
