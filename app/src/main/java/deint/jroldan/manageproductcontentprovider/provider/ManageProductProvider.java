@@ -60,13 +60,17 @@ public class ManageProductProvider extends ContentProvider {
         switch (uriMatcher.match(uri)) {
             case CATEGORY:
                 sqLiteQueryBuilder.setTables(DatabaseContract.Category.TABLE_NAME);
-                if(TextUtils.isEmpty(sortOrder))
+                if (TextUtils.isEmpty(sortOrder))
                     sortOrder = DatabaseContract.Category.DEFAULT_SORT;
                 break;
             case CATEGORY_ID:
 
                 break;
             case PRODUCT:
+                sqLiteQueryBuilder.setTables(DatabaseContract.Product.TABLE_NAME);
+                if (TextUtils.isEmpty(sortOrder)) {
+                    sortOrder = DatabaseContract.Product.DEFAULT_SORT;
+                }
                 break;
             case PRODUCT_ID:
                 break;

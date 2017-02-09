@@ -23,6 +23,7 @@ public class DatabaseContract {
     public static class Product implements BaseColumns {
         public static final String TABLE_NAME = "product";
         public static final String COLUMN_NAME = "name";
+        public static final String DEFAULT_SORT = COLUMN_NAME;
         public static final String COLUMN_DESCRIPTION = "description";
         public static final String COLUMN_BRAND = "brand";
         public static final String COLUMN_DOSAGE = "dosage";
