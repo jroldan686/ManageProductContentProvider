@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.database.sqlite.SQLiteException;
 
 import deint.jroldan.manageproductcontentprovider.R;
-import deint.jroldan.manageproductcontentprovider.database.DatabaseContract;
 import deint.jroldan.manageproductcontentprovider.database.DatabaseManager;
 import deint.jroldan.manageproductcontentprovider.interfaces.ManagePresenter;
 import deint.jroldan.manageproductcontentprovider.model.Product;
