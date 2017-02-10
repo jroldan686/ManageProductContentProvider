@@ -124,6 +124,25 @@ public class ManageProductProvider extends ContentProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-        return 0;
+        int affected = -1;
+        switch (uriMatcher.match(uri)) {
+            case CATEGORY:
+                affected=sqLiteDatabase.update(DatabaseContract.CategoryEntry.TABLE_NAME, values, selection, selectionArgs);
+                break;
+            case CATEGORY_ID:
+                //rowid=uri.getLastPathSegment();
+                //content://com.example.manageproductcontent/categoria/1
+                rowid=uri.getPathSegments().get(1);
+                selection=DatabaseContract.CategoryEntry._ID+"=?";
+                selectionArgs= new String[]{rowid};
+                affected=sqLiteDatabase.update(DatabaseContract.CategoryEntry.TABLE_NAME, values, selection, selectionArgs);
+
+                break;
+            case PRODUCT_ID:
+                break;
+            case PRODUCT:
+                affected=sqLiteDatabase.update(DatabaseContract.ProductEntry.TABLE_NAME, values, selection, selectionArgs);
+                break;
+        }
     }
 }

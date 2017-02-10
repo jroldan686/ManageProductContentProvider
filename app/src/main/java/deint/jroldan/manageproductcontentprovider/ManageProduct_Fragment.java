@@ -1,7 +1,12 @@
 package deint.jroldan.manageproductcontentprovider;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,6 +17,8 @@ import android.widget.EditText;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 
+import java.io.InputStream;
+
 import deint.jroldan.manageproductcontentprovider.provider.ManageProductContract;
 import deint.jroldan.manageproductcontentprovider.interfaces.CategoryPresenter;
 import deint.jroldan.manageproductcontentprovider.interfaces.ManagePresenter;
@@ -19,6 +26,7 @@ import deint.jroldan.manageproductcontentprovider.model.Product;
 
 public class ManageProduct_Fragment extends Fragment implements ManagePresenter.View, CategoryPresenter.View {
 
+    public static final int REQ_CODE_PICK_IMAGE = 1;
     private EditText edtName, edtDescription, edtBrand, edtDosage, edtStock, edtPrice;
     private Button btnInsertImage, btnAddProduct;
     private boolean addAction;
@@ -26,6 +34,7 @@ public class ManageProduct_Fragment extends Fragment implements ManagePresenter.
     private Spinner spCategory;
     private ManageProductListener manageProductListener;
     private ManagePresenter managePresenter;
+    private Bitmap bitmap;
 
     @Override
     public android.view.View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,7 +51,9 @@ public class ManageProduct_Fragment extends Fragment implements ManagePresenter.
         btnInsertImage.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
-
+                Intent intent = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, REQ_CODE_PICK_IMAGE);
             }
         });
         btnAddProduct = (Button)rootView.findViewById(R.id.btnAddProduct);
@@ -79,7 +90,7 @@ public class ManageProduct_Fragment extends Fragment implements ManagePresenter.
                     edtDosage.getText().toString(),
                     Double.valueOf(edtPrice.getText().toString()),
                     Integer.valueOf(edtStock.getText().toString()),
-                    R.drawable.aspirina_complex,
+                    bitmap,
                     cursor.getInt(0));
             managePresenter.addProduct(productNew);
         } else {
@@ -89,7 +100,7 @@ public class ManageProduct_Fragment extends Fragment implements ManagePresenter.
                     edtDosage.getText().toString(),
                     Double.valueOf(edtPrice.getText().toString()),
                     Integer.valueOf(edtStock.getText().toString()),
-                    R.drawable.aspirina_complex,
+                    bitmap,
                     cursor.getInt(0));
             managePresenter.updateProduct(productNew);
         }
@@ -136,5 +147,24 @@ public class ManageProduct_Fragment extends Fragment implements ManagePresenter.
         super.onDetach();
         manageProductListener = null;
         adapterCategory = null;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
+        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+
+        switch (requestCode) {
+            case REQ_CODE_PICK_IMAGE:
+                if(resultCode == Activity.RESULT_OK) {
+                    Uri selectedImage = imageReturnedIntent.getData();
+                    InputStream imageStream = null;
+                    try {
+                        bitmap = ImageResource.decodeUri(selectedImage);
+                        imgProduct.setImageBitmap(bitmap);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+        }
     }
 }

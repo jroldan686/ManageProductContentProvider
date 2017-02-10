@@ -45,7 +45,7 @@ public class DatabaseContract {
                         "%s TEXT NOT NULL,"+
                         "%s REAL NOT NULL,"+
                         "%s INTEGER NOT NULL,"+
-                        "%s TEXT NOT NULL,"+
+                        "%s BLOB,"+
                         "%s INTEGER NOT NULL %s)",
                 TABLE_NAME, BaseColumns._ID,
                 COLUMN_NAME,

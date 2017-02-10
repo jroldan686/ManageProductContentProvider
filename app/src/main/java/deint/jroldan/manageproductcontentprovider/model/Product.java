@@ -1,5 +1,6 @@
 package deint.jroldan.manageproductcontentprovider.model;
 
+import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -21,7 +22,7 @@ public class Product implements Comparable<Product>, Serializable, Parcelable, I
     private String mDosage;
     private double mPrice;
     private int mStock;
-    private int mImage;
+    private Bitmap mImage;
     private int mCategory;
 
     public Product() {
@@ -54,7 +55,7 @@ public class Product implements Comparable<Product>, Serializable, Parcelable, I
         }
     };
 
-    public Product(String mName, String mDescription, String mBrand, String mDosage, double mPrice, int mStock, int mImage, int mCategory) {
+    public Product(String mName, String mDescription, String mBrand, String mDosage, double mPrice, int mStock, Bitmap mImage, int mCategory) {
         //this.mId = UUID.randomUUID().toString();
         this.mName = mName;
         this.mDescription = mDescription;
@@ -74,7 +75,7 @@ public class Product implements Comparable<Product>, Serializable, Parcelable, I
         mDosage = in.readString();
         mPrice = in.readDouble();
         mStock = in.readInt();
-        mImage = in.readInt();
+        mImage = in.readParcelable(Bitmap.class.getClassLoader());
         mCategory = in.readInt();
     }
 
@@ -146,11 +147,11 @@ public class Product implements Comparable<Product>, Serializable, Parcelable, I
         this.mStock = mStock;
     }
 
-    public int getmImage() {
+    public Bitmap getmImage() {
         return mImage;
     }
 
-    public void setmImage(int mImage) {
+    public void setmImage(Bitmap mImage) {
         this.mImage = mImage;
     }
 
