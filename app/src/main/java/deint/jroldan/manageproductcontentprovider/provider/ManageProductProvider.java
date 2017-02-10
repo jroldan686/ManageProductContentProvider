@@ -89,7 +89,19 @@ public class ManageProductProvider extends ContentProvider {
     @Nullable
     @Override
     public String getType(Uri uri) {
-        return null;
+        String mimeType = null;
+        switch (uriMatcher.match(uri)) {
+            case CATEGORY:
+                mimeType = "vnd.android.cursor.dir/vnd.jroldan.manageproductcontentprovider.category";
+                break;
+            case CATEGORY_ID:
+                mimeType = "vnd.android.cursor.item/vnd.jroldan.manageproductcontentprovider.category";
+                break;
+            case PRODUCT:
+                mimeType = "vnd.android.cursor.dir/vnd.jroldan.manageproductcontentprovider.product";
+            case PRODUCT_ID:
+                mimeType="vnd.android.cursor.item/vnd.jroldan.manageproductcontentprovider.product";
+        }
     }
 
     @Nullable
